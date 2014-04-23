@@ -24,8 +24,7 @@
 <dnn:DnnCssInclude ID="DnnCssInclude7" runat="server" PathNameAlias="SkinPath" FilePath="assets/css/docs.css"  Priority="109" />
 <dnn:DnnCssInclude ID="DnnCssInclude8" runat="server" PathNameAlias="SkinPath" FilePath="assets/css/prettify.css"  Priority="110" />
 <dnn:DnnCssInclude ID="DnnCssInclude4" runat="server" PathNameAlias="SkinPath" FilePath="assets/css/animate.min.css"  Priority="111" />
-<dnn:DnnCssInclude ID="DnnCssInclude5" runat="server" FilePath="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css"  Priority="112" />
-<dnn:DnnCssInclude ID="DnnCssInclude6" runat="server" FilePath="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"  Priority="113" />
+<dnn:DnnCssInclude ID="DnnCssInclude5" runat="server" PathNameAlias="SkinPath" FilePath="assets/css/Font-Awesome-3.2.1/css/font-awesome.min.css"   Priority="112" />
 <dnn:DnnCssInclude ID="DnnCssInclude10" runat="server" PathNameAlias="SkinPath" FilePath="assets/js/video-js/video-js.css"  Priority="114" />
 <dnn:DnnCssInclude ID="DnnCssInclude3" runat="server" PathNameAlias="SkinPath" FilePath="css/style.css"  Priority="115" />
 <dnn:DnnCssInclude ID="DnnCssInclude9" runat="server" PathNameAlias="SkinPath" FilePath="assets/css/but.css"  Priority="116" />
@@ -34,16 +33,15 @@
 <dnn:DnnJsInclude ID="DnnJsIncludeApp" runat="server" PathNameAlias="SkinPath" FilePath="assets/js/application.js" />
 <dnn:DnnJsInclude ID="DnnJsInclude5" runat="server" PathNameAlias="SkinPath" FilePath="assets/js/video-js/video.js"></dnn:DnnJsInclude>
 <script>videojs.options.flash.swf = "<%=SkinPath%>assets/js/video-js/video-js.swf";</script>
-<div id="ControlPanel" runat="server"/>
-<%
-    '
-    ' set navbar position to relative if control panel is present,
-    ' which otherwise hides it
-    '
-    If ControlPanel.HasControls = True Then
-%><style type="text/css">.navbar-fixed-top, .navbar-fixed-bottom {position:relative;}</style>
-<%End If%><!-- navbar -->
-<div class="navbar navbar-fixed-top navbar-inverse">
+<script type="text/javascript">
+    jQuery(function ($) {
+        if ($('#ControlBar_ControlPanel').html() != undefined && $('#ControlBar_ControlPanel').html() != '') {
+            //console.log('ControlBar_ControlPanel ' + $('#ControlBar_ControlPanel'));
+            $('#mainmenu').removeClass('navbar-fixed-top');
+        }
+    });
+</script>
+<div id="mainmenu" class="navbar navbar-fixed-top navbar-inverse">
     <div class="navbar-inner">
     <div class="container">
         <button type="button" class="btn btn-navbar btn-inverse" data-toggle="collapse" data-target=".nav-collapse-search">

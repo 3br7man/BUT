@@ -35,15 +35,15 @@
 <dnn:DnnJsInclude ID="DnnJsInclude5" runat="server" PathNameAlias="SkinPath" FilePath="assets/js/video-js/video.js"></dnn:DnnJsInclude>
 <script>videojs.options.flash.swf = "<%=SkinPath%>assets/js/video-js/video-js.swf";</script>
 <div id="ControlPanel" runat="server"/>
-<%
-    '
-    ' set navbar position to relative if control panel is present,
-    ' which otherwise hides it
-    '
-    If ControlPanel.HasControls = True Then
-%><style type="text/css">.navbar-fixed-top, .navbar-fixed-bottom {position:relative;}</style>
-<%End If%><!-- navbar -->
-<div class="navbar navbar-fixed-top">
+<script type="text/javascript">
+    jQuery(function ($) {
+        if ($('#ControlBar_ControlPanel').html() != undefined && $('#ControlBar_ControlPanel').html() != '') {
+            //console.log('ControlBar_ControlPanel ' + $('#ControlBar_ControlPanel'));
+            $('#mainmenu').removeClass('navbar-fixed-top');
+        }
+    });
+</script>
+<div id="mainmenu" class="navbar navbar-fixed-top">
     <div class="navbar-inner">
     <div class="container-fluid">
         <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse-search">
